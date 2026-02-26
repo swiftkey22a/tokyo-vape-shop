@@ -161,7 +161,7 @@
             }
         }
         
-        /* === КАРТОЧКА БРЕНДА === */
+        /* === КАРТОЧКА БРЕНДА (ФИНАЛ) === */
         .brand-card {
             background: rgba(12, 12, 15, 0.85);
             backdrop-filter: blur(8px);
@@ -171,7 +171,7 @@
             transition: all 0.25s;
             display: flex;
             flex-direction: column;
-            height: 300px;
+            height: 280px;  /* оптимально для телефона */
             cursor: pointer;
         }
         .brand-card:hover {
@@ -189,56 +189,58 @@
         }
         .brand-name {
             color: white;
-            font-size: 0.95rem;
+            font-size: 0.85rem;  /* чуть меньше */
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
         }
         .brand-japanese {
             color: rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-family: 'MS Gothic', monospace;
+            white-space: nowrap;
         }
         .brand-image-container {
-	    flex: 1;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    margin: 8px 0;      /* чуть больше отступ */
-	    padding: 0 12px;     /* отступы по бокам */
-	    height: 110 px
-	}
-	
-	.brand-image {
-	    width: auto;
-	    max-width: 100%;
-	    max-height: 100%;        /* выше */
-	    height: auto;
-	    object-fit: contain;  /* не обрезает, показывает целиком */
-	    border-radius: 12px;
-	    border: 1px solid rgba(255, 255, 255, 0.05);
-	}
-	
-	.brand-card {
-	    background: rgba(12, 12, 15, 0.85);
-	    backdrop-filter: blur(8px);
-	    border-radius: 20px;
-	    padding: 16px;
-	    border: 1px solid rgba(255, 255, 255, 0.05);
-	    transition: all 0.25s;
-	    display: flex;
-	    flex-direction: column;
-	    height: 340px;        /* было 300px */
-	    cursor: pointer;
-	}
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4px 0;
+            padding: 0;
+            height: 120px;
+            background: transparent;  /* убрали черноту */
+        }
+        .brand-image {
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        .brand-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 2rem;
+        }
         .brand-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 12px;
+            margin-top: 8px;
+            font-size: 0.8rem;
         }
         .brand-strength {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.7rem;
         }
         .brand-price {
             color: white;
@@ -246,7 +248,7 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 4px 10px;
             border-radius: 40px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(4px);
             display: inline-flex;
@@ -254,12 +256,12 @@
             gap: 2px;
         }
         .price-value {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             margin: 0 2px;
         }
         .price-currency {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 400;
         }
@@ -727,15 +729,11 @@
         let currentCategory = null;
         let currentBrand = null;
 
-        // === ССЫЛКИ НА ФОТО БРЕНДОВ (ТЕПЕРЬ ОБА БРЕНДА ИСПОЛЬЗУЮТ ТВОЮ КАРТИНКУ) ===
+        // === ССЫЛКИ НА ФОТО БРЕНДОВ (ДОБАВЬ СВОИ GitHub ССЫЛКИ) ===
         const brandImages = {
-            'ANNIMA': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'ANNIMA LOVE SOUR': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'ЗЛАЯ МОНАШКА ICE': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'VAPORESSO': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'CATSWILL': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'DOTA': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'SAMOUBICA': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true'
+            'ANIMMA': 'https://raw.githubusercontent.com/swiftkey22a/tokyo-vape-shop/main/images/animma.jpg',
+            'ANIMMA LOVE SOUR': 'https://raw.githubusercontent.com/swiftkey22a/tokyo-vape-shop/main/images/animma.jpg',
+            // добавь остальные бренды по аналогии
         };
 
         // === ЯПОНСКИЕ НАЗВАНИЯ ДЛЯ ЭСТЕТИКИ ===
@@ -781,7 +779,7 @@
             }, 2500);
         }
 
-        // === ОБРАБОТКА МАКСИМУМА (НЕЙТРАЛЬНЫЕ СООБЩЕНИЯ) ===
+        // === ОБРАБОТКА МАКСИМУМА ===
         function handleMaxLimit(product) {
             const messages = [
                 `💫 на сегодня хватит · ${product.stock} шт`,
@@ -824,8 +822,8 @@
                 { id: '5', brand: 'ANIMMA LOVE SOUR', taste: 'КИСЛЫЙ ЦИТРУС', price: 350, strength: '70MG', stock: 5, category: 'SOUR' },
                 { id: '6', brand: 'ANIMMA LOVE SOUR', taste: 'КИСЛОЕ ЯБЛОКО', price: 350, strength: '70MG', stock: 3, category: 'SOUR' },
                 { id: '7', brand: 'VAPORESSO XROS 5', taste: 'RED LEATHER', price: 2400, strength: 'Устройство', stock: 1, category: 'PODS' },
-                { id: '8', brand: 'CATSWILL', taste: 'SOUR APPLE', price: 380, strength: '50MG', stock: 4, category: 'SOUR' },
-                { id: '9', brand: 'CATSWILL', taste: 'BLUEBERRY', price: 380, strength: '35MG', stock: 2, category: 'SWEET' },
+                { id: '8', brand: 'CATSWILL & MALASIAN', taste: 'SOUR APPLE', price: 380, strength: '50MG', stock: 4, category: 'SOUR' },
+                { id: '9', brand: 'CATSWILL & MALASIAN', taste: 'BLUEBERRY', price: 380, strength: '35MG', stock: 2, category: 'SWEET' },
                 { id: '10', brand: 'DOTA', taste: 'MANGO ICE', price: 400, strength: '50MG', stock: 3, category: 'ICED' }
             ];
             renderCategories(['ICED', 'SOUR', 'SWEET', 'PODS']);
@@ -941,10 +939,6 @@
                 // Минимальная цена
                 const minPrice = Math.min(...items.map(p => p.price));
                 
-                // Есть ли соль
-                const hasSalt = items.some(p => p.strength?.includes('MG'));
-                const saltIcon = hasSalt ? '🧂' : '';
-                
                 // Японский текст
                 const japaneseText = getJapaneseText(brand);
 
@@ -963,7 +957,7 @@
                         </div>
                         
                         <div class="brand-footer">
-                            <span class="brand-strength">${strengths || '20-50mg'} ${saltIcon}</span>
+                            <span class="brand-strength">${strengths || '20-50mg'}</span>
                             <span class="brand-price">
                                 <span class="price-currency">от</span> 
                                 <span class="price-value">${minPrice}</span>
@@ -1027,7 +1021,7 @@
             renderCurrentView();
         }
 
-        // === КОРЗИНА (ОБНОВЛЕННАЯ addToCart) ===
+        // === КОРЗИНА ===
         function addToCart(id) {
             let product = allProducts.find(p => p.id === id);
             if (!product || product.stock <= 0) return;
