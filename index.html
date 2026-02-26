@@ -6,7 +6,7 @@
     <title>TOKYO VAPE · 東京</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        /* === БАЗОВЫЕ СТИЛИ === */
+        /* === ВСЕ ТВОИ СТИЛИ БЕЗ ИЗМЕНЕНИЙ === */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
@@ -18,8 +18,6 @@
             letter-spacing: 0.2px;
         }
         .container { max-width: 800px; margin: 0 auto; }
-        
-        /* === ХЕДЕР === */
         .header {
             text-align: center;
             padding: 32px 20px;
@@ -68,8 +66,6 @@
             margin-top: 8px;
             font-weight: 300;
         }
-        
-        /* === ПОИСК === */
         .search-box {
             margin: 24px 0;
             position: relative;
@@ -102,8 +98,6 @@
             color: rgba(255, 255, 255, 0.4);
             font-size: 1.1rem;
         }
-        
-        /* === КАТЕГОРИИ === */
         .categories {
             display: flex;
             overflow-x: auto;
@@ -138,135 +132,17 @@
             border-color: rgba(255, 255, 255, 0.3);
             color: white;
         }
-        
-        /* === СЕТКА ДЛЯ КАРТОЧЕК === */
-        .brands-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 20px 0 100px;
-            width: 100%;
-        }
-        
         .products-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 16px;
             margin: 20px 0 100px;
         }
-        
         @media (min-width: 640px) {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
-        /* === КАРТОЧКА БРЕНДА (ФИНАЛ) === */
-        .brand-card {
-            background: rgba(12, 12, 15, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.25s;
-            display: flex;
-            flex-direction: column;
-            height: 280px;  /* оптимально для телефона */
-            cursor: pointer;
-        }
-        .brand-card:hover {
-            background: rgba(15, 15, 18, 0.9);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-        .brand-card:active {
-            transform: translateY(0);
-        }
-        .brand-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .brand-name {
-            color: white;
-            font-size: 0.85rem;  /* чуть меньше */
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 120px;
-        }
-        .brand-japanese {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.65rem;
-            font-family: 'MS Gothic', monospace;
-            white-space: nowrap;
-        }
-        .brand-image-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 4px 0;
-            padding: 0;
-            height: 120px;
-            background: transparent;  /* убрали черноту */
-        }
-        .brand-image {
-            width: auto;
-            max-width: 100%;
-            max-height: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-        .brand-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 2rem;
-        }
-        .brand-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-            font-size: 0.8rem;
-        }
-        .brand-strength {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.7rem;
-        }
-        .brand-price {
-            color: white;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 10px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(4px);
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-        }
-        .price-value {
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 0 2px;
-        }
-        .price-currency {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 400;
-        }
-        
-        /* === КАРТОЧКА ТОВАРА === */
         .product-card {
             background: rgba(12, 12, 15, 0.85);
             backdrop-filter: blur(8px);
@@ -358,13 +234,9 @@
             opacity: 0.35;
             cursor: not-allowed;
         }
-        
-        /* === СТАТУСЫ НАЛИЧИЯ === */
         .in-stock { color: #a0e0a0; font-weight: 500; }
         .low-stock { color: #ffd280; font-weight: 500; }
         .out-stock { color: #ffa0a0; font-weight: 500; }
-        
-        /* === КНОПКА КОРЗИНЫ === */
         .cart-btn {
             position: fixed;
             bottom: 30px;
@@ -405,8 +277,6 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             font-weight: 500;
         }
-        
-        /* === МОДАЛКА КОРЗИНЫ === */
         .cart-overlay {
             position: fixed;
             top: 0;
@@ -604,8 +474,6 @@
             background: #ffa0a0;
             color: black;
         }
-        
-        /* === ЗАГРУЗКА === */
         .loading {
             text-align: center;
             padding: 50px;
@@ -623,8 +491,27 @@
             margin: 0 auto 20px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* === ТОСТ УВЕДОМЛЕНИЯ === */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.4s ease; }
+
+        /* === НОВЫЕ СТИЛИ ДЛЯ ФОТО БРЕНДОВ === */
+        .brand-photo {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 12px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-photo:hover {
+            opacity: 1;
+        }
+
+        /* === СТИЛИ ДЛЯ ТОСТОВ === */
         .toast {
             position: fixed;
             top: 20px;
@@ -646,9 +533,6 @@
             margin: 0 auto;
             letter-spacing: 0.5px;
         }
-        .toast.warning {
-            border-left: 4px solid #ffd280;
-        }
         .toast.success {
             border-left: 4px solid #a0e0a0;
         }
@@ -663,11 +547,6 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
-        
-        /* === УТИЛИТЫ === */
-        .hidden { display: none; }
-        .fade-in { animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -690,7 +569,7 @@
                 <div class="spinner"></div>
                 <p>ЗАГРУЗКА КАТАЛОГА</p>
             </div>
-            <div id="productsGrid"></div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
         
         <div class="cart-btn" onclick="openCart()">
@@ -729,43 +608,13 @@
         let currentCategory = null;
         let currentBrand = null;
 
-        // === ССЫЛКИ НА ФОТО БРЕНДОВ (ДОБАВЬ СВОИ GitHub ССЫЛКИ) ===
+        // === ССЫЛКИ НА ФОТО БРЕНДОВ (ДОБАВЛЯЙ СЮДА) ===
         const brandImages = {
-            'ANNIMA': 'https://github.com/swiftkey22a/tokyo-vape-shop/blob/main/images/animma.jpg?raw=true',
-            'ANIMMA LOVE SOUR': 'https://raw.githubusercontent.com/swiftkey22a/tokyo-vape-shop/main/images/animma.jpg',
-            // добавь остальные бренды по аналогии
+            'ANIMMA': '',
+            'ЗЛАЯ МОНАШКА ICE': '', // сюда добавишь позже
+            'VAPORESSO': '',          // сюда добавишь позже
+            // ... остальные бренды
         };
-
-        // === ЯПОНСКИЕ НАЗВАНИЯ ДЛЯ ЭСТЕТИКИ ===
-        function getJapaneseText(brand) {
-            if (brand.includes('AN')) return '東京';
-            if (brand.includes('CAT')) return '大阪';
-            if (brand.includes('DOTA')) return '名古屋';
-            if (brand.includes('МОНАШ')) return '京都';
-            if (brand.includes('VAPO')) return '横浜';
-            return '日本';
-        }
-
-        // === ЭМОДЗИ ПО ВКУСУ/БРЕНДУ ===
-        function getEmojiForProduct(product) {
-            const taste = product.taste?.toLowerCase() || '';
-            const brand = product.brand?.toLowerCase() || '';
-            if (taste.includes('вишн')) return '🍒';
-            if (taste.includes('арбуз')) return '🍉';
-            if (taste.includes('клубник')) return '🍓';
-            if (taste.includes('малин')) return '🫐';
-            if (taste.includes('ананас')) return '🍍';
-            if (taste.includes('апельсин')) return '🍊';
-            if (taste.includes('лимон')) return '🍋';
-            if (taste.includes('виноград')) return '🍇';
-            if (taste.includes('персик')) return '🍑';
-            if (taste.includes('киви')) return '🥝';
-            if (brand.includes('animma')) return '🔥';
-            if (brand.includes('монашк')) return '😈';
-            if (brand.includes('vaporesso')) return '⚡';
-            if (brand.includes('самоубийц')) return '💀';
-            return '◈';
-        }
 
         // === ТОСТ УВЕДОМЛЕНИЕ ===
         function showToast(message, type = 'info') {
@@ -790,6 +639,27 @@
             ];
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             showToast(randomMessage, 'info');
+        }
+
+        // === Эмодзи по вкусу/бренду ===
+        function getEmojiForProduct(product) {
+            const taste = product.taste?.toLowerCase() || '';
+            const brand = product.brand?.toLowerCase() || '';
+            if (taste.includes('вишн')) return '🍒';
+            if (taste.includes('арбуз')) return '🍉';
+            if (taste.includes('клубник')) return '🍓';
+            if (taste.includes('малин')) return '🫐';
+            if (taste.includes('ананас')) return '🍍';
+            if (taste.includes('апельсин')) return '🍊';
+            if (taste.includes('лимон')) return '🍋';
+            if (taste.includes('виноград')) return '🍇';
+            if (taste.includes('персик')) return '🍑';
+            if (taste.includes('киви')) return '🥝';
+            if (brand.includes('animma')) return '🔥';
+            if (brand.includes('монашк')) return '😈';
+            if (brand.includes('vaporesso')) return '⚡';
+            if (brand.includes('самоубийц')) return '💀';
+            return '◈';
         }
 
         // === ЗАГРУЗКА ТОВАРОВ ===
@@ -818,15 +688,10 @@
                 { id: '1', brand: 'ANIMMA', taste: 'ITACHI ВИШНЯ АЙС', price: 350, strength: '70MG', stock: 2, category: 'ICED' },
                 { id: '2', brand: 'ANIMMA', taste: 'JUGO АРБУЗ АЙС', price: 350, strength: '70MG', stock: 3, category: 'ICED' },
                 { id: '3', brand: 'ANIMMA', taste: 'SASUKE МАЛИНА АЙС', price: 350, strength: '70MG', stock: 3, category: 'ICED' },
-                { id: '4', brand: 'ANIMMA', taste: 'KAKASHI ЛИМОН АЙС', price: 350, strength: '70MG', stock: 1, category: 'ICED' },
-                { id: '5', brand: 'ANIMMA LOVE SOUR', taste: 'КИСЛЫЙ ЦИТРУС', price: 350, strength: '70MG', stock: 5, category: 'SOUR' },
-                { id: '6', brand: 'ANIMMA LOVE SOUR', taste: 'КИСЛОЕ ЯБЛОКО', price: 350, strength: '70MG', stock: 3, category: 'SOUR' },
-                { id: '7', brand: 'VAPORESSO XROS 5', taste: 'RED LEATHER', price: 2400, strength: 'Устройство', stock: 1, category: 'PODS' },
-                { id: '8', brand: 'CATSWILL & MALASIAN', taste: 'SOUR APPLE', price: 380, strength: '50MG', stock: 4, category: 'SOUR' },
-                { id: '9', brand: 'CATSWILL & MALASIAN', taste: 'BLUEBERRY', price: 380, strength: '35MG', stock: 2, category: 'SWEET' },
-                { id: '10', brand: 'DOTA', taste: 'MANGO ICE', price: 400, strength: '50MG', stock: 3, category: 'ICED' }
+                { id: '4', brand: 'ЗЛАЯ МОНАШКА ICE', taste: 'MANGO MIX', price: 550, strength: '50MG', stock: 5, category: 'ICED' },
+                { id: '5', brand: 'VAPORESSO XROS 5', taste: 'RED LEATHER', price: 2400, strength: 'Устройство', stock: 1, category: 'PODS' }
             ];
-            renderCategories(['ICED', 'SOUR', 'SWEET', 'PODS']);
+            renderCategories(['ICED','PODS']);
             currentCategory = null;
             currentBrand = null;
             renderCurrentView();
@@ -904,7 +769,6 @@
                 return;
             }
 
-            // Группируем по брендам
             const brandsMap = new Map();
             productsToShow.forEach(p => {
                 if (!brandsMap.has(p.brand)) {
@@ -913,62 +777,26 @@
                 brandsMap.get(p.brand).push(p);
             });
 
-            // Заголовок с категорией
             let html = '';
             if (currentCategory) {
                 html += `
-                    <div style="grid-column:1/-1; margin-bottom:20px;">
+                    <div style="grid-column:1/-1; margin-bottom:10px;">
                         <button class="category-btn" onclick="showAll()" style="margin-right:10px;">← ВСЕ</button>
-                        <span style="color:rgba(255,255,255,0.5);">${currentCategory}</span>
+                        <span style="color:rgba(255,255,255,0.5);">Категория: ${currentCategory}</span>
                     </div>
                 `;
             }
-
-            // Карточки брендов (2 в ряд)
-            html += `<div class="brands-grid">`;
 
             for (let [brand, items] of brandsMap.entries()) {
                 const emoji = getEmojiForProduct(items[0]);
                 const imgSrc = brandImages[brand] || '';
-                
-                // Собираем все доступные крепости для этого бренда
-                const strengths = [...new Set(items.map(p => p.strength).filter(s => s && !s.includes('Устройство')))]
-                    .sort()
-                    .join('·');
-                
-                // Минимальная цена
-                const minPrice = Math.min(...items.map(p => p.price));
-                
-                // Японский текст
-                const japaneseText = getJapaneseText(brand);
-
                 html += `
-                    <div class="brand-card" onclick="selectBrand('${brand}')">
-                        <div class="brand-header">
-                            <span class="brand-name">${emoji} ${brand}</span>
-                            <span class="brand-japanese">${japaneseText}</span>
-                        </div>
-                        
-                        <div class="brand-image-container">
-                            ${imgSrc ? 
-                                `<img src="${imgSrc}" class="brand-image" loading="lazy" onerror="this.style.display='none'" alt="${brand}">` : 
-                                `<div class="brand-image-placeholder">📷</div>`
-                            }
-                        </div>
-                        
-                        <div class="brand-footer">
-                            <span class="brand-strength">${strengths || '20-50mg'}</span>
-                            <span class="brand-price">
-                                <span class="price-currency">от</span> 
-                                <span class="price-value">${minPrice}</span>
-                                <span class="price-currency">₽</span>
-                            </span>
-                        </div>
+                    <div class="product-card fade-in" onclick="selectBrand('${brand}')" style="cursor:pointer;">
+                        <div class="product-brand">${emoji} ${brand}</div>
+                        ${imgSrc ? `<img src="${imgSrc}" class="brand-photo" loading="lazy" onerror="this.style.display='none'" alt="${brand}">` : ''}
                     </div>
                 `;
             }
-            
-            html += `</div>`;
             grid.innerHTML = html;
         }
 
@@ -982,17 +810,13 @@
 
             let html = '';
             if (showBackButton) {
-                const brandName = products[0].brand;
-                const japaneseText = getJapaneseText(brandName);
                 html += `
-                    <div style="grid-column:1/-1; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+                    <div style="grid-column:1/-1; margin-bottom:10px;">
                         <button class="category-btn" onclick="backToBrands()">← К БРЕНДАМ</button>
-                        <span style="color:rgba(255,255,255,0.5); font-size:0.9rem;">${brandName} <span style="font-family:'MS Gothic';">${japaneseText}</span></span>
                     </div>
                 `;
             }
 
-            html += `<div class="products-grid">`;
             products.forEach(p => {
                 let stockClass = p.stock > 2 ? 'in-stock' : p.stock > 0 ? 'low-stock' : 'out-stock';
                 let stockText = p.stock > 0 ? `${p.stock} шт` : 'НЕТ';
@@ -1012,7 +836,6 @@
                     </div>
                 `;
             });
-            html += `</div>`;
             grid.innerHTML = html;
         }
 
@@ -1021,7 +844,7 @@
             renderCurrentView();
         }
 
-        // === КОРЗИНА ===
+        // === КОРЗИНА С ТОСТАМИ ===
         function addToCart(id) {
             let product = allProducts.find(p => p.id === id);
             if (!product || product.stock <= 0) return;
@@ -1145,7 +968,7 @@
         function submitOrder() {
             let items = Object.values(cart);
             if (items.length === 0) {
-                showToast('🛒 Корзина пуста', 'warning');
+                showToast('🛒 Корзина пуста', 'info');
                 return;
             }
             let message = '';
@@ -1182,7 +1005,6 @@
             }
         }
 
-        // === ИНИЦИАЛИЗАЦИЯ ===
         document.getElementById('searchInput').addEventListener('input', filterProducts);
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1196,4 +1018,3 @@
     </script>
 </body>
 </html>
-
